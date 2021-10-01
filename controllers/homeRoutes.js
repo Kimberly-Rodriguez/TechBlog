@@ -28,6 +28,33 @@ router.get('/', async (req, res) => {
   }
 });
 
+// //QUESTION
+// // Do I create the home route to the home nav option like so?
+// router.get('/home', async (req, res) => {
+//   try {
+//     // // Get all posts and JOIN with user data
+//     // const postData = await Post.findAll({
+//     //   include: [
+//     //     {
+//     //       model: User,
+//     //       attributes: ['name'],
+//     //     },
+//     //   ],
+//     // });
+
+//     // Serialize data so the template can read it
+//     const posts = postData.map((post) => post.get({ plain: true }));
+//     console.log(posts);
+//     // Pass serialized data and session flag into template
+//     res.render('/', { 
+//       posts, 
+//       logged_in: req.session.logged_in 
+//     });
+//   } catch (err) { 
+//     res.status(500).json(err);
+//   }
+// });
+
 // http://localhost:5001/post/1 (example, the 1 is interchangeable with any post id number)
 router.get('/post/:id', async (req, res) => {
   // get the "1" out of the route name through req.params.id
