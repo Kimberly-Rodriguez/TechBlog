@@ -28,31 +28,31 @@ router.get('/', async (req, res) => {
   }
 });
 
-//from dashboard to homeß
-router.get('/home', async (req, res) => {
-  try {
-    // Get all posts and JOIN with user data
-    const postData = await Post.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
+// //from dashboard to homeß
+// router.get('/home', async (req, res) => {
+//   try {
+//     // Get all posts and JOIN with user data
+//     const postData = await Post.findAll({
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['name'],
+//         },
+//       ],
+//     });
 
-    // Serialize data so the template can read it
-    const posts = postData.map((post) => post.get({ plain: true }));
-    console.log(posts);
-    // Pass serialized data and session flag into template
-    res.render('/homepage', { 
-      posts, 
-      logged_in: req.session.logged_in 
-    });
-  } catch (err) { 
-    res.status(500).json(err);
-  }
-});
+//     // Serialize data so the template can read it
+//     const posts = postData.map((post) => post.get({ plain: true }));
+//     console.log(posts);
+//     // Pass serialized data and session flag into template
+//     res.render('/homepage', { 
+//       posts, 
+//       logged_in: req.session.logged_in 
+//     });
+//   } catch (err) { 
+//     res.status(500).json(err);
+//   }
+// });
 
 // http://localhost:5001/post/1 (example, the 1 is interchangeable with any post id number)
 router.get('/post/:id', async (req, res) => {

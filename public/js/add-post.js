@@ -2,7 +2,6 @@ async function newPostHandler(event) {
   event.preventDefault();
   const post_title = document.querySelector('#post_title').value;
   // const contents = document.querySelector('#contents').value;
-
   const contents = document.querySelector('input[name="contents"]').value;
  
   // Send fetch request to add a new dish
