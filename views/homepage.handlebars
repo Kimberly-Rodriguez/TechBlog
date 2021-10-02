@@ -2,9 +2,7 @@
 {{#each posts as |post| }}
 <div class="row mb-4 project">
   <div class="col-md-5">
-    <h2>
-      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
-    
+    <h2>    
       <a href="/post/{{post.id}}">{{post.post_title}}</a>
     </h2>
     {{!-- Using a custom helper 'format_date', the date has been formatted --}}
