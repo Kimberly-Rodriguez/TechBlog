@@ -30,8 +30,7 @@ router.get('/', async (req, res) => {
 });
 
 
-// http://localhost:5001/dashboard
-// Use withAuth middleware to prevent access to route
+// http://localhost:5001/dashboard // Use withAuth middleware to prevent access to route
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
@@ -52,7 +51,65 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-//GET route for Post by id
+//localhost:5001/post/edit/:id // Show user post for edits/updates
+router.get('/post/edit/:id', async (req, res) => {
+  try{
+
+    if (!req.session.logged_in) {
+      res.redirect('/');
+      return;
+    }
+
+    const postData = await Post.findByPk(req.params.id, {
+      include: {model: User}
+    });
+   
+    const post = postData.get({ plain: true});
+
+    res.render('edit', {
+      post,
+      user_id: req.session.user_id,
+      logged_in: req.session.logged_in
+    })
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
+
+// http://localhost:5001/dashboard/:id // Show all users posts & comments 
+router.get('/dashboard/:id', async (req, res) => {
+  try {
+
+    if (!req.session.logged_in) {
+      res.redirect('/');
+      return;
+    }
+
+    const userData = await User.findByPk(req.params.id, {
+      include: [{model: Post}, {
+        model: Comment, 
+        include: [{model: Post,
+          include: {model: User}
+        }]  
+      }]    
+    });
+    const user = userData.get({ plain: true});
+    
+    res.render('dashboard',
+      {
+      user,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      }
+    );
+  } catch (err) {
+    res.status(500).json(err);
+  }
+}); 
+
+//http://localhost:5001/post/:id (the id # changes dependingon the post request)  
 router.get('/post/:id', async (req, res) => {
   try {
 
