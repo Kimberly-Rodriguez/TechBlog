@@ -2,13 +2,14 @@ const router = require('express').Router();
 const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// http://localhost:5001/api/post
+// http://localhost:5001/api/post // to create a new blog post
 router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
-      post_title:req.body.post_title,
+      title:req.body.post_title,
       contents:req.body.contents,
       user_id: req.session.user_id,
+      date_created: req.body.date_created,
     });
 
     res.status(200).json(newPost);
@@ -17,15 +18,13 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-// http://localhost:5001/api/post/1 (the '1' is interchangeable)
-// This action method is the Controller. It accepts input and sends data to the Model and the View.
+// http://localhost:5001/api/post/1 (the '1' is interchangeable) // This action method is the Controller. It accepts input and sends data to the Model and the View.
 router.put('/:id', async (req, res) => {
-  // Where is this action method sending the data from the body of the fetch request? Why?
-  // It is sending the data to the Model so that one post can be updated with new data in the database.
+  
   try {
     const post = await Post.update(
       {
-        post_title: req.body.post_title,
+        title: req.body.title,
         contents: req.body.contents
         // comment: req.body.comment,
       },
@@ -42,8 +41,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-
-// http://localhost:5001/api/post/1 (the '1' is interchangeable)
+// http://localhost:5001/api/post/1 (the '1' is interchangeable) // delete post all together
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.destroy({
@@ -57,7 +55,6 @@ router.delete('/:id', withAuth, async (req, res) => {
       res.status(404).json({ message: 'No post found with this id!' });
       return;
     }
-
     res.status(200).json(postData);
   } catch (err) {
     res.status(500).json(err);
