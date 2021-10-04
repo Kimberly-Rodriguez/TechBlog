@@ -3,22 +3,22 @@ const { User, Post, Comment } = require('../models');
 
 const userData = require('./User.json');
 const postData = require('./Post.json');
-const comment = require('./Comment.json');
+const commentData = require('./Comment.json');
 
 // Adding the seeds to the database 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  const userSeed = await User.bulkCreate(user, {
+  const userSeed = await User.bulkCreate(userData, {
     individualHooks: true,
     returning: true,
   });
-  const postSeed = await Post.bulkCreate(post, {
+  const postSeed = await Post.bulkCreate(postData, {
     individualHooks: true,
     returning: true,
   });
 
-  const commentSeed = await Comment.bulkCreate(comment, {
+  const commentSeed = await Comment.bulkCreate(commentData, {
     individualHooks: true,
     returning: true,
   });

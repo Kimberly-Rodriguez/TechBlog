@@ -20,7 +20,7 @@ const { User } = require('../../models');
 //http://localhost:5001/api/user/create // to create a new user
 router.post('/create', async (req, res) => {
   try {
-      console.log(req.body);
+     
       let userData = await User.create({
           username: req.body.username,
           email: req.body.email,
