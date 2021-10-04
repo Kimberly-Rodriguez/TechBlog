@@ -54,7 +54,41 @@
   {{/if}}
 </div>
 
+{{!-- Comment Post Section --}}
+<div class="row mb-2">
+      <div class="col-md-8">
+        <h3><a href="/post/{{post.id}}"><u>Comments by {{user.username}}</u></a></h3>
+      </div>
 
+{{!-- {{#if comment.length}} --}}
+  <div class="col-md-6 post-list">
+    {{!-- <h3>Current Post:</h3> --}}
+
+    {{#each user.comments as |comment|}}
+
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/post/{{post.id}}">{{comment.post.title}}</a></h4>
+      </div>
+      <div class="col-md-8">
+        <h4><a href="/post/{{post.id}}">{{comment.post.user.username}}</a></h4>
+      </div>
+      <div class="col-md-8">
+      <h4><a href="/post/{{post.id}}">{{comment.date_created}}</a></h4>
+      </div>
+       <div class="form-group">
+        <label for="contents">Contents:</label>
+        <input class="form-input" id="contents" name="contents"></input>
+         <p class="form-input">{{comment.post.contents}}</p>
+      </div>
+      {{!-- <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+      </div>
+    </div> --}}
+    {{/each}}
+  </div>
+  {{!-- {{/if}}
+</div> --}}
 
 
 

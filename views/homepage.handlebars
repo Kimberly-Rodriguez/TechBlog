@@ -3,10 +3,10 @@
 <div class="row mb-4 project">
   <div class="col-md-5">
     <h2>    
-      <a href="/post/{{post.id}}">{{post.post_title}}</a>
+      <a href="/post/{{post.id}}">{{post.title}}</a>
     </h2>
     {{!-- Using a custom helper 'format_date', the date has been formatted --}}
-    <p>Created by {{post.user.name}} on {{format_date post.date_created}}</p>
+    <p>Created by {{post.user.username}} on {{format_date post.date_created}}</p>
   </div>
   <div class="col-md-7">
     <p>
@@ -15,3 +15,5 @@
   </div>
 </div>
 {{/each}}
+
+{{!-- <script src="/js/post.js"></script> --}}
