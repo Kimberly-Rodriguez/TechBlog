@@ -29,7 +29,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-
 // http://localhost:5001/dashboard // Use withAuth middleware to prevent access to route
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
@@ -51,7 +50,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-//localhost:5001/post/edit/:id // Show user post for edits/updates
+//http://localhost:5001/post/edit/:id // Show user post for edits/updates
 router.get('/post/edit/:id', async (req, res) => {
   try{
 
@@ -77,8 +76,7 @@ router.get('/post/edit/:id', async (req, res) => {
   }
 })
 
-
-// http://localhost:5001/dashboard/:id // Show all users posts & comments 
+//http://localhost:5001/dashboard/:id // Show all users posts & comments 
 router.get('/dashboard/:id', async (req, res) => {
   try {
 
@@ -138,8 +136,7 @@ router.get('/post/:id', async (req, res) => {
   }
 });
 
-
-// http://localhost:5001/login
+//http://localhost:5001/login
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
