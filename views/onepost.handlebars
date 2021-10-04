@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{user.username}}!</h2>
+    <p style="display: none" id="blog_id">{{blog.id}}</p>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3> Post:</h3>
+    <form class="form new-important-post-form">
+      <div class="form-group">
+        <p style="display: none" id="user_id">{{user.id}}</p>
+           <p style="display: none" id="user_id">{{post}.id}}</p>
+        <label for="post-title">{{post.title}}</label>
+        <input class="form-input" type="text" id="post.title" name="post-title" />
+         <label for="post-user">{{post.user.username}}</label>
+         <input class="form-input" type="text" id="post_user_username" name="post-username" />
+         <label for="post-date_created">{{post.date_created}}</label>
+         <input class="form-input" type="text" id="post_date_created" name="post-date-created" />
+       
+      </div>
+      <div class="form-group">
+        <label for="contents">Contents:</label>
+        <input class="form-input" id="contents" name="contents"></input>
+         <p class="form-input">{{post.contents}}</p>
+      </div>
+      {{!-- <div class="form-group">
+        <button type="submit" value='Submit' class="btn btn-primary" id="createBtn">Create</button>
+      </div> --}}
+    </form>
+  </div>
+
+<script src="/js/newcomment.js"></script>
