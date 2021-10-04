@@ -1,0 +1,21 @@
+[
+  {
+      "comment": "I am a new developer and while at first MVC was difficult to enjoy with time I am seeing the true venifits --Thanks for sharing this important info.",
+      "date_created": "7/15/1991 17:35 PM",
+      "user_id": 1,
+      "post_id": 1
+  },
+  {
+      "comment": "This was super helpful - thanks! ",
+      "date_created": "09/20/2021 7:00 AM",
+      "user_id": 1,
+      "post_id": 2
+  },
+  {
+      "comment": "Couldn't agree with you more",
+      "date_created": "10/04/2021 9:40 PM",
+      "user_id": 1,
+      "blog_id": 3
+  }
+ 
+]
