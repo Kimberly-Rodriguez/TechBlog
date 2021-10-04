@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
-// http://localhost:5001
+// http://localhost:5001 // to show all post
 router.get('/', async (req, res) => {
   try {
     // Get all posts and JOIN with user data
@@ -10,17 +10,18 @@ router.get('/', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['name'],
+          // attributes: ['name'],
         },
       ],
     });
 
     // Serialize data so the template can read it
     const posts = postData.map((post) => post.get({ plain: true }));
-    console.log(posts);
+
     // Pass serialized data and session flag into template
     res.render('homepage', { 
       posts, 
+      user_id: req.session.user_id,
       logged_in: req.session.logged_in 
     });
   } catch (err) { 
@@ -51,32 +52,35 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
-// need the get routes
+//GET route for Post by id
+router.get('/post/:id', async (req, res) => {
+  try {
 
-// router.get('/homepage', async (req, res) => {
-//   try {
-//     // Get all posts and JOIN with user data
-//     const postData = await Post.findAll({
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['name'],
-//         },
-//       ],
-//     });
+    if (!req.session.logged_in) {
+      res.redirect('/');
+      return;
+    }
 
-//     // Serialize data so the template can read it
-//     const posts = postData.map((post) => post.get({ plain: true }));
-//     console.log(posts);
-//     // Pass serialized data and session flag into template
-//     res.render('homepage', { 
-//       posts, 
-//       logged_in: req.session.logged_in 
-//     });
-//   } catch (err) { 
-//     res.status(500).json(err);
-//   }
-// });
+    const postData = await Post.findByPk(req.params.id, {
+      include: [{
+        model: Comment, 
+        include: [{model: User}]  
+      }, {model: User}]    
+    });
+
+    const post = postData.get({ plain: true});
+    
+    res.render('onepost',
+      {
+      post,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
+      }
+    );
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 
 // http://localhost:5001/login
