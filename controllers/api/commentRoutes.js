@@ -11,7 +11,8 @@ router.post('/', async (req, res) => {
         comment: req.body.comment,
         date_created: req.body.date_created,
         user_id: req.session.user_id,
-        post_id: req.body.post_id
+        post_id: req.body.post_id,
+        // username: req.body.username
       }
     )
 

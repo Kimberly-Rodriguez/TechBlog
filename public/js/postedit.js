@@ -25,29 +25,25 @@ const editPost = async (event) => {
         alert(response.statusText);
       }
 }
-
-//delete post
+//delete button
 const deletePost = async (event) => {
-    event.preventDefault();
-   
-    const answer = confirm("Are ready to delete this post?");
+  event.preventDefault();
 
-    if (answer){
+  let response = await fetch(`/api/post/${event.target.dataset.id}`, {
+    method: 'DELETE',
+  });
 
-        let response = await fetch(`/api/post/${id}`, {
-            method: "DELETE",
-        })
-            
-        if (response.ok) {
-            document.location.replace(`/dashboard/${userId}`)
-          } else {
-            alert(response.statusText);
-          }
+  if (response.ok) {
+    document.location.replace(`/dashboard/${userId}`);
+  } else {
+    alert(response.statusText);
+  }
+};
 
-    } else {
-        return;
-    }
-}
+//delete post//
+deleteBtn.addEventListener('click', deletePost);
+
+
 
 //update post//
 editBtn.addEventListener('click', editPost)

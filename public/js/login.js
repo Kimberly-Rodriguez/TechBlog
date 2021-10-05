@@ -42,6 +42,8 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
+      console.log("hello!")
+      // If successful, redirect the browser to the dashboard page
       document.location.replace('/dashboard');
     } else {
       alert(response.statusText);
