@@ -29,21 +29,9 @@
     <h3>Current Post:</h3>
 
     {{#each posts as |post|}}
-
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/post/{{post.id}}">{{post.title}}</a></h4>
-      </div>
-      <div class="col-md-8">
-        <h4><a href="/post/{{post.id}}">{{../username}}</a></h4>
-      </div>
-      <div class="col-md-8">
-      <h4><a href="/post/{{post.id}}">{{post.date_created}}</a></h4>
-      </div>
-       <div class="form-group">
-        <label for="contents">Contents:</label>
-        <input class="form-input" id="contents" name="contents"></input>
-         <p class="form-input">{{post.contents}}</p>
+        <h4><a href="/post/{{post.id}}">{{post.title}}</a></h4> 
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
@@ -54,10 +42,14 @@
   {{/if}}
 </div>
 
+
+
+
+
 {{!-- Comment Post Section --}}
 <div class="row mb-2">
       <div class="col-md-8">
-        <h3><a href="/post/{{post.id}}"><u>Comments by {{username}}</u></a></h3>
+        <h3><a href="/post/{{post.id}}">Comments by <u> {{ username}}</u></a></h3>
       </div>
 
 {{!-- {{#if comment.length}} --}}
@@ -73,9 +65,9 @@
       <div class="col-md-8">
         <h4><a href="/post/{{post.id}}">{{comment.post.username}}</a></h4>
       </div>
-      <div class="col-md-8">
+      {{!-- <div class="col-md-8">
       <h4><a href="/post/{{post.id}}">{{comment.date_created}}</a></h4>
-      </div>
+      </div> --}}
        <div class="form-group">
         <label for="contents">Contents:</label>
         <input class="form-input" id="contents" name="contents"></input>

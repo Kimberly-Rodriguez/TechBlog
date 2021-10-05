@@ -1,8 +1,6 @@
 const editBtn = document.getElementById("editBtn");
 let userId = document.getElementById("userId").textContent;
 let id = document.getElementById("EoDid").textContent;
-
-
 //deleting a post//
 const deleteBtn = document.getElementById('deleteBtn');
 
