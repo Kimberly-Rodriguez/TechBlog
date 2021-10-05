@@ -6,26 +6,25 @@ const withAuth = require('../../utils/auth');
 router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
-      title:req.body.post_title,
-      contents:req.body.contents,
+      title: req.body.title,
+      contents: req.body.contents,
       user_id: req.session.user_id,
-      date_created: req.body.date_created,
     });
 
     res.status(200).json(newPost);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
 
 // http://localhost:5001/api/post/1 (the '1' is interchangeable) // This action method is the Controller. It accepts input and sends data to the Model and the View.
 router.put('/:id', async (req, res) => {
-  
   try {
     const post = await Post.update(
       {
         title: req.body.title,
-        contents: req.body.contents
+        contents: req.body.contents,
         // comment: req.body.comment,
       },
       {
@@ -60,7 +59,5 @@ router.delete('/:id', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
-
-
 
 module.exports = router;

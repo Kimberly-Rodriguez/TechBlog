@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{user.username}}!</h2>
+    <h2>Welcome, {{username}}!</h2>
   </div>
 </div>
 
@@ -9,9 +9,9 @@
     <h3>Create a New Post:</h3>
     <form class="form new-important-post-form">
       <div class="form-group">
-        <p style="display: none" id="user_id">{{user.id}}</p>
-        <label for="post-title">Post Title:</label>
-        <input class="form-input" type="text" id="post.title" name="post-title" />
+        <p style="display: none" id="user_id">{{id}}</p>
+        <label for="post-title">Title:</label>
+        <input class="form-input" type="text" id="title" name="post-title" />
       </div>
       <div class="form-group">
         <label for="contents">Contents:</label>
@@ -28,14 +28,14 @@
   <div class="col-md-6 post-list">
     <h3>Current Post:</h3>
 
-    {{#each user.posts as |post|}}
+    {{#each posts as |post|}}
 
     <div class="row mb-2">
       <div class="col-md-8">
         <h4><a href="/post/{{post.id}}">{{post.title}}</a></h4>
       </div>
       <div class="col-md-8">
-        <h4><a href="/post/{{post.id}}">{{../user.username}}</a></h4>
+        <h4><a href="/post/{{post.id}}">{{../username}}</a></h4>
       </div>
       <div class="col-md-8">
       <h4><a href="/post/{{post.id}}">{{post.date_created}}</a></h4>
@@ -57,21 +57,21 @@
 {{!-- Comment Post Section --}}
 <div class="row mb-2">
       <div class="col-md-8">
-        <h3><a href="/post/{{post.id}}"><u>Comments by {{user.username}}</u></a></h3>
+        <h3><a href="/post/{{post.id}}"><u>Comments by {{username}}</u></a></h3>
       </div>
 
 {{!-- {{#if comment.length}} --}}
   <div class="col-md-6 post-list">
     {{!-- <h3>Current Post:</h3> --}}
 
-    {{#each user.comments as |comment|}}
+    {{#each comments as |comment|}}
 
     <div class="row mb-2">
       <div class="col-md-8">
         <h4><a href="/post/{{post.id}}">{{comment.post.title}}</a></h4>
       </div>
       <div class="col-md-8">
-        <h4><a href="/post/{{post.id}}">{{comment.post.user.username}}</a></h4>
+        <h4><a href="/post/{{post.id}}">{{comment.post.username}}</a></h4>
       </div>
       <div class="col-md-8">
       <h4><a href="/post/{{post.id}}">{{comment.date_created}}</a></h4>
