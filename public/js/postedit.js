@@ -43,10 +43,7 @@ const deletePost = async (event) => {
 //delete post//
 deleteBtn.addEventListener('click', deletePost);
 
-
-
 //update post//
 editBtn.addEventListener('click', editPost)
 
-//delete post//
-deleteBtn.addEventListener('click', deletePost)
+

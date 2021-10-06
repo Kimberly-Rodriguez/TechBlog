@@ -39,7 +39,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
-    console.log(user);
+    // console.log(user);
 
     res.render('dashboard', {
       ...user,
@@ -65,6 +65,8 @@ router.get('/edit/:id', async (req, res) => {
     const post = postData.get({ plain: true });
 
     res.render('edit', {
+
+      // any information that I want my handlebars to have access to 
       post,
       user_id: req.session.user_id,
       logged_in: req.session.logged_in,
@@ -121,7 +123,7 @@ router.get('/post/:id', async (req, res) => {
     });
 
     const post = postData.get({ plain: true });
-
+//  res.json(post)
     res.render('post', {
       post,
       logged_in: req.session.logged_in,

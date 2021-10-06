@@ -31,7 +31,8 @@
     {{#each posts as |post|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/post/{{post.id}}">{{post.title}}</a></h4> 
+        {{!-- /post/ --}}
+        <h4><a href="/edit/{{post.id}}">{{post.title}}</a></h4> 
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" class="deleteBtn" data-id="{{post.id}}">DELETE</button>
@@ -49,7 +50,7 @@
 {{!-- Comment Post Section --}}
 <div class="row mb-2">
       <div class="col-md-8">
-        <h3><a href="/post/{{post.id}}">Comments by <u> {{ username}}</u></a></h3>
+        <h3><a href="/post/{{post.id}}">Comments by <u> {{username}}</u></a></h3>
       </div>
 
 {{!-- {{#if comment.length}} --}}

@@ -39,9 +39,9 @@ const createPost = async (event) => {
 //delete post
 const deletePost = async (event) => {
   event.preventDefault();
-  console.log("I am trying to delete")
+  // console.log("I am trying to delete")
 if (event.target.matches("button")) {
-    console.log("I am in the if statement")
+    // console.log("I am in the if statement")
   let response = await fetch(`/api/post/${event.target.dataset.id}`, {
     method: 'DELETE',
   });
