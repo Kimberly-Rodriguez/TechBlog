@@ -23,7 +23,9 @@ https://github.com/Kimberly-Rodriguez/TechBlog
 
 ```
 
-![webimage](public/css/assets/img/readmeSpaceImg.png)
+![webimage](public/css/assets/img/readmeSpace.png)
+
+[Site link](https://salty-dusk-96734.herokuapp.com/)
 
 ## Tools
 
