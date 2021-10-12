@@ -23,6 +23,7 @@
     </form>
   </div>
 
+{{!-- <a href="/edit/7">click me!</a>  --}}
 {{!-- All post created by user  --}}
 {{#if posts.length}}
   <div class="col-md-6 post-list">
@@ -31,8 +32,8 @@
     {{#each posts as |post|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        {{!-- /post/ --}}
-        <h4><a href="/edit/{{post.id}}">{{post.title}}</a></h4> 
+        {{!-- LOOK HERE /post/ --}}
+       <h4><a class="my_link" href="/edit/{{post.id}}">{{post.title}}</a><h4>
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" class="deleteBtn" data-id="{{post.id}}">DELETE</button>
@@ -42,9 +43,6 @@
   </div>
   {{/if}}
 </div>
-
-
-
 
 
 {{!-- Comment Post Section --}}
@@ -86,23 +84,5 @@
 
 
 
-{{!-- //Delete Btn --}}
-  {{!-- {{#if posts.length}}
-  <div class="col-md-6 post-list">
-    <h3>Current Post:</h3>
-
-    {{#each posts as |post|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/post/{{post.id}}">{{post.post_title}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
-      </div>
-    </div>
-    {{/each}}
-  </div>
-  {{/if}}
-</div> --}}
 
 <script src="./js/post.js"></script>

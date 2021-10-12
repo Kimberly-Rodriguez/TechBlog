@@ -76,42 +76,11 @@ router.get('/edit/:id', async (req, res) => {
   }
 });
 
-//http://localhost:5001/dashboard/:id // Show all users posts & comments
-// router.get('/dashboard/:id', async (req, res) => {
-//   try {
-//     if (!req.session.logged_in) {
-//       res.redirect('/');
-//       return;
-//     }
-
-//     const userData = await User.findByPk(req.params.id, {
-//       include: [
-//         { model: Post },
-//         {
-//           model: Comment,
-//           include: [{ model: Post, include: { model: User } }],
-//         },
-//       ],
-//     });
-//     const user = userData.get({ plain: true });
-
-//     res.render('dashboard', {
-//       user,
-//       logged_in: req.session.logged_in,
-//       user_id: req.session.user_id,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 //http://localhost:5001/post/:id (the id # changes dependingon the post request)
 router.get('/post/:id', async (req, res) => {
   try {
-    if (!req.session.logged_in) {
-      res.redirect('/');
-      return;
-    }
+    
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
@@ -123,11 +92,10 @@ router.get('/post/:id', async (req, res) => {
     });
 
     const post = postData.get({ plain: true });
-//  res.json(post)
+
     res.render('post', {
-      post,
+      ...post,
       logged_in: req.session.logged_in,
-      user_id: req.session.user_id,
     });
   } catch (err) {
     res.status(500).json(err);

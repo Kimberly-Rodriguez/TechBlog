@@ -106,3 +106,8 @@ header.masthead .site-heading .h1 {
     font-size: 1.875rem;
   }
 }
+
+.my_link {
+  position:absolute;
+  z-index: 9999;
+}

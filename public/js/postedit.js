@@ -12,7 +12,7 @@ const editPost = async (event) => {
     let title = document.getElementById('editTitle').value.trim();
     let contents = document.getElementById('editContent').value.trim();
     
-    const response = await fetch(`/api/post/u/${id}`, {
+    const response = await fetch(`/api/post/${id}`, {
         method: "PUT",
         body: JSON.stringify({ title, contents }),
         headers: { 'Content-Type': 'application/json' }
