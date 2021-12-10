@@ -4,12 +4,11 @@ const { Comment } = require('../../models')
 //POST to create a new comment all //
 router.post('/', async (req, res) => {
   try {
-    console.log(req.session.user_id);
-    console.log(req.body);
+    // console.log(req.session.user_id);
+    // console.log(req.body);
     const newComment = await Comment.create(
       {
         comment: req.body.comment,
-        date_created: req.body.date_created,
         user_id: req.session.user_id,
         post_id: req.body.post_id,
         // username: req.body.username

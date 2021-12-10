@@ -1,8 +1,8 @@
 //Elements For Adding New Comment//
-const newComment = document.getElementById('newComment');
-const commentForm = document.getElementById('form');
-const sCommentBtn = document.getElementById('sBtn');
+const createBtn = document.getElementById('createBtn');
 let visible = false;
+
+console.log(createBtn);
 
 // Function to Make the Add Comment Form Visibile Or Invisible
 const addComment = () => {
@@ -22,14 +22,10 @@ const createComment = async (event) => {
 
     let comment = document.getElementById('comment').value.trim();
     console.log(comment);
-    let newTime = new Date();
-    let date_created = moment(newTime).format("M/D/Y H:mm A");
-    let post_id = document.getElementById('post_id').textContent;
-    
-
+  
     const response = await fetch ("/api/comment", {
         method: 'POST',
-        body: JSON.stringify({comment, date_created, post_id}),
+        body: JSON.stringify({comment}),
         headers: { 'Content-Type': 'application/json' }
     })
 
@@ -41,6 +37,6 @@ const createComment = async (event) => {
 }
 
 //Make comment form visible/invisible event Listener
-newComment.addEventListener("click", addComment);
-sCommentBtn.addEventListener('click', createComment);
+// newComment.addEventListener("click", addComment);
+createBtn.addEventListener('click', createComment);
 

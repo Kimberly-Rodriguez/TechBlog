@@ -13,6 +13,7 @@ router.get('/', async (req, res) => {
           attributes: ['username'],
         },
       ],
+
     });
 
     // Serialize data so the template can read it
@@ -31,6 +32,7 @@ router.get('/', async (req, res) => {
 
 // http://localhost:5001/dashboard // Use withAuth middleware to prevent access to route
 router.get('/dashboard', withAuth, async (req, res) => {
+  // try statement allows you to define a block of code to be tested for errors while it is being executed
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
